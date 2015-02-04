@@ -5,13 +5,15 @@ if (!file.exists("household_power_consumption.txt")) {
         unzip("household_power_consumption.zip")
 }
 library(data.table)
-DT<- fread("household_power_consumption.txt", sep=";", header=F,
+DT<- fread("household_power_consumption.txt", sep=";",
         na.strings="[?]", nrow=2880, skip="1/2/2007", stringsAsFactors=F)
 # I've counted in Notepad++ number of matches with "1/2/2007" and "2/2/2007" and
 # they turned out to be 1440 both
 header<- unlist(read.table("household_power_consumption.txt", sep=";", 
                       header=F, nrow=1, stringsAsFactors=F))
 setnames(DT, header)
+# dim(DT)
+# [1] 2880    9
 
 # here comes the actual plot:
 png("plot1.png") # reqired plot dimensions are default, so I don't specify them

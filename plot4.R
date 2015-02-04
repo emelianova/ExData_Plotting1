@@ -5,7 +5,7 @@ if (!file.exists("household_power_consumption.txt")) {
         unzip("household_power_consumption.zip")
 }
 library(data.table)
-DT<- fread("household_power_consumption.txt", sep=";", header=F,
+DT<- fread("household_power_consumption.txt", sep=";", 
            na.strings="[?]", nrow=2880, skip="1/2/2007", stringsAsFactors=F)
 header<- unlist(read.table("household_power_consumption.txt", sep=";", 
                            header=F, nrow=1, stringsAsFactors=F))
