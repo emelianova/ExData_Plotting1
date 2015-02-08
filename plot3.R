@@ -20,6 +20,6 @@ plot(DT$datetime, DT$Sub_metering_1,
      type="l", ylab="Energy sub metering", xlab="")
 lines(DT$datetime, DT$Sub_metering_2, col="red")
 lines(DT$datetime, DT$Sub_metering_3, col="blue")
-legend("topright", names(DT)[7:9], lty=1, col=c("black", "red", "blue"), 
+legend("topright", names(DT)[5:7], lty=1, col=c("black", "red", "blue"), 
        y.intersp=1)
 dev.off()
