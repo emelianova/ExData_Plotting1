@@ -13,6 +13,7 @@ setnames(DT, header)
 DT[, `:=` (datetime=as.POSIXct(paste(Date, Time), format="%d/%m/%Y %H:%M:%S"),
            Date=NULL,
            Time=NULL)]
+Sys.setlocale("LC_TIME", "English")
 
 # here comes the actual plot:
 png("plot4.png")
@@ -24,6 +25,9 @@ plot(datetime, Sub_metering_1,
      type="l", ylab="Energy sub metering", xlab="")
 lines(datetime, Sub_metering_2, col="red")
 lines(datetime, Sub_metering_3, col="blue")
+par(xpd=T)
+legend(locator(1), legend=names(DT)[5:7], lty=1, col=c("black", "red", "blue"), 
+       y.intersp=.8, bty="n")
 plot(datetime, Voltage, type="l")
 plot(datetime, Global_reactive_power, type="l")
 dev.off()
